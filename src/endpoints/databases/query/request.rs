@@ -21,10 +21,10 @@ pub enum Filter {
         filter_type: FilterType,
     },
     And {
-        and: Vec<FilterType>,
+        and: Vec<Filter>,
     },
     Or {
-        or: Vec<FilterType>,
+        or: Vec<Filter>,
     },
 }
 

@@ -206,15 +206,19 @@ fn test_query_request() {
     let request = QueryDatabaseRequest {
         filter: Some(Filter::Or {
             or: vec![
-                FilterType::Property {
-                    property: "In stock".to_string(),
-                    condition: PropertyCondition::Checkbox(CheckBoxCondition::Equals(true)),
+                Filter::Value { 
+                    filter_type: FilterType::Property {
+                        property: "In stock".to_string(),
+                        condition: PropertyCondition::Checkbox(CheckBoxCondition::Equals(true)),
+                    },
                 },
-                FilterType::Property {
-                    property: "Cost of next trip".to_string(),
-                    condition: PropertyCondition::Number(NumberCondition::GreaterThanOrEqualTo(
-                        Number::from(2),
-                    )),
+                Filter::Value { 
+                    filter_type: FilterType::Property {
+                        property: "Cost of next trip".to_string(),
+                        condition: PropertyCondition::Number(NumberCondition::GreaterThanOrEqualTo(
+                            Number::from(2),
+                        )),
+                    },
                 },
             ],
         }),
